@@ -26,18 +26,35 @@ These are the global settings for the BotService API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2021-03
+tag: package-2021-03-09
 ```
 
 
-### Tag: package-2021-03
+### Tag: package-2021-03-09
 
-These settings apply only when `--tag=package-2021-03` is specified on the command line.
+These settings apply only when `--tag=package-2021-03-09` is specified on the command line.
 
 ```yaml $(tag) == 'package-2021-03'
 input-file:
   - Microsoft.BotService/stable/2021-03-09/botservice.json
+directive:
+  - suppress: R4009
+    from: botservice.json
+    reason: We do not yet support systemdata.
+  - suppress: R3010
+    from: botservice.json
+    reason: It is not a useful operation in the bot service.
+  - suppress: R2001
+    from: botservice.json
+    reason: Flatten does not improve the programming experience here.
+  - suppress: R3018
+    from: botservice.json
+    reason: We used Enums where we might extend to multiple states, and left booleans where it would ease development.
+  - suppress: R2066
+    from: botservice.json
+    reason: The path as-is is quite descriptive.
 ```
+
 ### Tag: package-2020-06-02
 
 These settings apply only when `--tag=package-2020-06-02` is specified on the command line.
